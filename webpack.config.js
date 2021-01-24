@@ -1,5 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 module.exports = () => {
     return {
@@ -20,20 +23,32 @@ module.exports = () => {
         output: {
             filename: 'js/[name].js',
             path: path.resolve(__dirname, './dist'),
-            publicPath: './dist'
+           // publicPath: './dist'
         },
-
+        
+        //??
         devServer: {
             overlay: true
+        },
+
+        module: {
+            rules: [
+                {
+                    test: /\.css$/,
+                    use: ['style-loader', 'css-loader'],
+                }
+            ],
         },
 
         plugins: [
             //каждый плагин - это конструктор
             new HtmlWebpackPlugin({
                 template: './src/pages/index.html',
-                title: 'Учебный проект FSD frontend education program',
+                title: 'TOXIN (FSD frontend education program)',
                 favicon: './src/assets/favicon.ico'
-            }) 
-        ]
+            }),
+            new CleanWebpackPlugin(),
+
+        ],
     };
 };

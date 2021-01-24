@@ -19,7 +19,9 @@ webpack - сборщик модулей и ресурсов
 
 webpack-cli - интерфейс командной строки для вебпака
 
-webpack-serve - (в webpack 4 "webpack-dev-server")
+webpack-serve - 
+
+webpack-dev-server - 
 
 -D или --save-dev - установка в devDependencies
 
